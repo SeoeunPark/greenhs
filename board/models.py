@@ -21,7 +21,7 @@ class Introduction(models.Model):
     repository = models.ForeignKey(Repository, on_delete=models.CASCADE)  # intro1.repository
     version = models.IntegerField(default=1)
     contents = models.TextField()
-    access = models.IntegerField(default=1)  # 0: private, 1: public
+    access = models.TextField()  # 0: private, 1: public
 
     # intro1.comment_set
     class Meta:

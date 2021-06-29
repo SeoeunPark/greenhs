@@ -18,7 +18,7 @@
                 <td>
                 {% for introduction in repository.introduction_set.all %}
                         <tr>
-                            <td>제목: <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}">{{ introduction.version }}</a></td>
+                            <td>No.{{ introduction.version }} <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}">{{ introduction.version }}</a></td>
                             <td><a href="{% url 'board:introduction_delete' repository_pk=repository.pk pk=introduction.pk %}"><i class="bi bi-trash"></i></a></td>
                         </tr>
                     {% endfor %}
