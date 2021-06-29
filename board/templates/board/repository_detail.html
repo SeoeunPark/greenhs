@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail Repository{% endblock %}
+
+{% block content %}
+    {{ repository.description }}
+    <a href="{% url 'board:introduction_add' repository_pk=repository.pk %}"><i class="bi bi-plus-circle-fill"></i></a>
+    <table class="table">
+        <tbody>
+        {% for introduction in repository.introduction_set.all %}
+            <tr>
+                <td>Version: <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}">{{ introduction.version }}</a></td>
+                <td><a href="{% url 'board:introduction_delete' repository_pk=repository.pk pk=introduction.pk %}"><i class="bi bi-trash"></i></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
