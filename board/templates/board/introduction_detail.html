@@ -3,9 +3,13 @@
 {% block title %}Detail Introduction{% endblock %}
 
 {% block content %}
+        {%  load staticfiles %}
+    {%  load static %}
     {{ introduction.contents }}
-    <a href="{% url 'board:comment_add' repository_pk=introduction.repository_id introduction_pk=introduction.pk %}">Add Comment</a>
-    <table class="table">
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/repository_list.css' %}">
+
+    <a href="{% url 'board:comment_add' repository_pk=introduction.repository_id introduction_pk=introduction.pk %}"><button class="button button1">댓글 달기</button></a>
+    <table class="type10">
         <tbody>
         {% for comment in introduction.comment_set.all %}
             <tr>
