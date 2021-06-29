@@ -3,22 +3,28 @@
 {% block title %}List Repository{% endblock %}
 
 {% block content %}
-    선인장 정보글
+    {%  load staticfiles %}
+    {%  load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    <img src="{% static 'img/logo.png' %}" style="width: 300px; ">
     <br>
-    총 {{ repository_list.count }} 개
-    <a href="{% url 'board:repository_add' %}"><i class="bi bi-plus-lg"></i></a>
     <table class="table w-50">
-        <tbody>
-        {% for repository in repository_list %}
-            <tr>
-                <td class="align-middle"><a href="{% url 'board:repository_modify' pk=repository.pk %}"><i class="bi bi-pencil-fill"></i></a></td>
-                <td>
+        <tr>
+            {% for repository in repository_list %}
+                <th>
                     <a href="{% url 'board:repository_detail' pk=repository.pk %}">{{ repository.name }}<br>
                     </a>
+                </th>
+                <td>
+                {% for introduction in repository.introduction_set.all %}
+                        <tr>
+                            <td>제목: <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}">{{ introduction.version }}</a></td>
+                            <td><a href="{% url 'board:introduction_delete' repository_pk=repository.pk pk=introduction.pk %}"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                    {% endfor %}
                 </td>
-                <td class="align-middle"><a href="{% url 'board:repository_delete' pk=repository.pk %}"><i class="bi bi-trash"></i></a></td>
-            </tr>
-        {% endfor %}
+            {% endfor %}
+        </tr>
         </tbody>
     </table>
 {% endblock %}

@@ -46,13 +46,6 @@ class IntroductionCreateView(generic.CreateView):
     # success_url = reverse_lazy('board:repository_detail') #repository_detail은 pk가 필요함(ImproperlyConfigured at /repository/3/introduction/add/)
     def get_initial(self):
         repository = get_object_or_404(Repository, pk=self.kwargs['repository_pk'])
-        introduction = repository.introduction_set.aggregate(
-            Max('version'))  # 해당 repository의 introduction 중 version 최대값 구하자
-        version = introduction['version__max']
-        if version == None:  # introduction이 아예 없으면 version 기본값: 1
-            version = 1
-        else:  # introduction이 있으면 version 최대값에서 +1
-            version += 1
         return {'repository': repository, 'version': version}
 
     def get_success_url(self):
