@@ -12,12 +12,12 @@ div.left {
 	box-sizing: border-box;
 }
 div.right {
-	width: 50%;
-	margin-top: 100px;
+	width: 45%;
+	margin-top: 10px;
 	float: right;
-	box-sizing: border-box;
+	background-size: contain;
 	background-repeat: no-repeat;
-	background-image: url("../img/background.jpg");
+	background-image: url("../img/background2.gif");
 }
 
 
@@ -35,7 +35,7 @@ table.type10 thead th {
 	font-weight: bold;
 	vertical-align: top;
 	color: #fff;
-	background: #529a38;
+	background: #44b364;
 	margin: 20px 10px;
 }
 table.type10 tbody th {

@@ -52,6 +52,7 @@ table.type10 .even {
 	background: #aee5bf;
 }
 table.type09 {
+    margin-top: 30px;
   border-collapse: collapse;
   text-align: left;
   line-height: 1.5;
@@ -77,4 +78,15 @@ table.type09 td {
   padding: 10px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
+}
+p {
+	font-family: "Nanum Gothic", sans-serif;
+	font-size: 20px;
+}
+p.a {
+    	color: #124b12;
+      font-weight: bold;
+}
+p.at {
+	font-weight: 400;
 }

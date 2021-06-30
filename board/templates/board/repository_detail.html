@@ -6,11 +6,12 @@
     {%  load staticfiles %}
     {%  load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'polls/intro_detail.css' %}">
-    <a href="{% url 'board:repository_list' %} "><img src="{% static 'img/logo.png' %}" style="width: 200px; "></a>
+
+    <a href="{% url 'board:repository_list' %} "><img src="{% static 'img/logo.png'%}" style="width: 200px; margin-bottom: 30px; margin-top: 30px"></a>
     <br>
-    {{ repository.description }}
-    <p class="a">그린하우스에 글을 쓰고 싶으시다면 물방울을 CLICK 해주세요!</p>
-    <a href="{% url 'board:introduction_add' repository_pk=1 %} "><i class="bi bi-droplet fa-4x"></i></a>
+    <p class="a">{{ repository.description }}</p>
+    <p class="at">그린하우스에 글을 쓰고 싶으시다면 물방울을 CLICK 해주세요!
+    <a href="{% url 'board:introduction_add' repository_pk=repository.pk %} "><i class="bi bi-droplet fa-4x"></i></a></p>
     <table class="type09">
         <thead>
         <tr>

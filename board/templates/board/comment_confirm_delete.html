@@ -4,9 +4,12 @@
 
 {% block content %}
     <form action="" method="post">
+        {%  load staticfiles %}
+    {%  load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/form.css' %}">
         {% csrf_token %}
-        댓글을 삭제하시겠습니까? "{{ comment }}"?
-        <button type="submit">Delete</button>
-        <button type="button" onclick="history.back();">Cancel</button>
+         "{{ comment }}" 댓글을 삭제하시겠습니까??
+        <button type="submit">삭제</button>
+        <button type="button" onclick="history.back();">취소</button>
     </form>
 {% endblock %}

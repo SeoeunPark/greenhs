@@ -85,7 +85,6 @@ class IntroductionUpdateView(generic.UpdateView):
     model = Introduction
     fields = ['title', 'repository', 'version', 'contents', 'access', 'passwd', ]  # '__all__'
     template_name_suffix = '_update'
-
     def get_success_url(self):
         return reverse_lazy('board:repository_detail', kwargs={'pk': self.kwargs['repository_pk']})
 

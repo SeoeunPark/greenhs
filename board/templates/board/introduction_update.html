@@ -3,9 +3,15 @@
 {% block title %}글 수정{% endblock %}
 
 {% block content %}
+    {%  load staticfiles %}
+    {%  load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/formedit.css' %}">
+    <a href="{% url 'board:repository_list' %} "><img src="{% static 'img/back.png' %}"></a>
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_ul }}
-        <button type="submit">글 수정하기</button>
+        <p>글 수정하기<p>
+        <hr>
+        {{ form.as_p }}
+        <button type="submit">저장</button>
     </form>
 {% endblock %}

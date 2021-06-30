@@ -4,8 +4,11 @@
 
 {% block content %}
     <form action="" method="post">
+        {%  load staticfiles %}
+        {%  load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/form.css' %}">
         {% csrf_token %}
-        {{ form.as_ul }}
+        {{ form.as_p }}
         <button type="submit">댓글 수정</button>
     </form>
 {% endblock %}

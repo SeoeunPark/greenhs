@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 
 {% block title %}글 쓰기{% endblock %}
-
 {% block content %}
+    {%  load staticfiles %}
+    {%  load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/form.css' %}">
+    <a href="{% url 'board:repository_list' %} "><img src="{% static 'img/logo.png' %}" style="width: 200px; "></a>
+    <br>
+    <body>
     <form action="" method="post">
+        <h5 class="my-3 border-bottom pb-2">글 추가</h5>
         {% csrf_token %}
-
-        <label for="your_name">Your name: </label>
-        <input id="your_name" type="text" name="title" value="{{ introduction.title }}">
-        <input type="submit" value="OK">
         {{ form.as_p }}
-        <button type="submit">글 쓰기</button>
+        <button type="submit">저장</button>
     </form>
+    </body>
 {% endblock %}
