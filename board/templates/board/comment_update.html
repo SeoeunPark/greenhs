@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Update Comment{% endblock %}
+{% block title %}댓글 수정{% endblock %}
 
 {% block content %}
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_ul }}
-        <button type="submit">Update</button>
+        <button type="submit">댓글 수정</button>
     </form>
 {% endblock %}

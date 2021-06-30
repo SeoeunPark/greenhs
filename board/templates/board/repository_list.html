@@ -5,44 +5,43 @@
 {% block content %}
     {%  load staticfiles %}
     {%  load static %}
-        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'polls/intro_detail.css' %}">
-        <meta name="viewport"
+    <meta name="viewport"
           content="width=device-width, height=device-height,
                      minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
-
     <div>
         <div class="left">
-    <br>
-    <img src="{% static 'img/logo.png' %}" style="width: 300px; ">
-    <br>
-        <br>
-    <p class="a">그린하우스에 글을 쓰고 싶으시다면 물방울을 CLICK 해주세요!</p>
-    <a href="{% url 'board:introduction_add' repository_pk=1 %} "><i class="bi bi-droplet fa-4x"></i></a>
             <br>
-    <table class="type10">
-        <tr>
-            {% for repository in repository_list %}
-                        <thead>
-                <th>
-                    <a href="{% url 'board:repository_detail' pk=repository.pk %}" style="color: white";>{{ repository.name }}<br>
-                    </a>
-                </th>
-                </tr>
-                </thead>
-                <tbody>
+            <img src="{% static 'img/logo.png' %}" style="width: 300px; ">
+            <br>
+            <br>
+            <br>
+            <table class="type10">
                 <tr>
-                    {% for introduction in repository.introduction_set.all %}
-                        <tr>
-                            <td>No.{{ introduction.version }} {{ introduction.contents|truncatechars:10 }}</td>
-                            <td><a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}" style="color: green";><i class="bi bi-arrow-right-square "></i></a></td>
+                    {% for repository in repository_list %}
+                        <thead>
+                        <th>
+                            <a href="{% url 'board:repository_detail' pk=repository.pk %}" style="color: white";>{{ repository.name }}<br>
+                            </a>
+                        </th>
                         </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            {% for introduction in repository.introduction_set.all|slice:':3' %}
+                                <tr>
+                                    <td>No.{{ introduction.version }} {{ introduction.title|truncatechars:10 }}</td>
+                                    <td><a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}" style="color: green";><i class="bi bi-arrow-right-square "></i></a></td>
+                                </tr>
+                            {% endfor %}
                     {% endfor %}
-            {% endfor %}
-            </tr>
-        </tbody>
-    </table>
-</div>
-    <div class="right"></div>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+        <div class="right">
+
+        </div>
     </div>
 {% endblock %}

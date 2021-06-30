@@ -5,9 +5,40 @@
 {% block content %}
         {%  load staticfiles %}
     {%  load static %}
-    {{ introduction.contents }}
-        <link rel="stylesheet" type="text/css" href="{% static 'polls/repository_list.css' %}">
-
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/intro_detail.css' %}">
+        <a href="{% url 'board:repository_list' %} "><img src="{% static 'img/logo.png' %}" style="width: 200px; "></a>
+    <br>
+    <table class="type09">
+  <thead>
+  <tr>
+    <th scope="cols">타이틀</th>
+    <th scope="cols">내용</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">제목</th>
+    <td>{{ introduction.title }}</td>
+  </tr>
+  <tr>
+    <th scope="row">주제</th>
+    <td>    {{ introduction.repository }}</td>
+  </tr>
+  <tr>
+    <th scope="row">글 번호</th>
+    <td>{{ introduction.version }}</td>
+  </tr>
+  <tr>
+    <th scope="row">글 내용</th>
+    <td>{{ introduction.contents }}</td>
+  </tr>
+  <tr>
+    <th scope="row">작성자</th>
+    <td>{{ introduction.access }}</td>
+  </tr>
+  </tbody>
+</table>
+    <br>
     <a href="{% url 'board:comment_add' repository_pk=introduction.repository_id introduction_pk=introduction.pk %}"><button class="button button1">댓글 달기</button></a>
     <table class="type10">
         <tbody>

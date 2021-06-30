@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Confirm Delete Introduction{% endblock %}
+{% block title %}글 삭제{% endblock %}
 
 {% block content %}
     <form action="" method="post">
         {% csrf_token %}
-        Do you want to delete Introduction "{{ introduction }}"?
-        <button type="submit">Delete</button>
-        <button type="button" onclick="history.back();">Cancel</button>
+        "{{ introduction }}"를 삭제하시겠습니까?
+        <button type="submit">삭제</button>
+        <button type="button" onclick="history.back();">취소</button>
     </form>
 {% endblock %}

@@ -1,8 +1,12 @@
+body {
+	margin:20px;
+}
+
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 2px 2px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -14,7 +18,7 @@
 .button1 {
   background-color: white;
   color: black;
-  border: 2px solid #4CAF50;
+  border: 2px solid gray;
 }
 
 table.type10 {
@@ -46,4 +50,31 @@ table.type10 td {
 }
 table.type10 .even {
 	background: #aee5bf;
+}
+table.type09 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+
+}
+table.type09 thead th {
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: green;
+  border-bottom: 3px solid darkgreen;
+}
+table.type09 tbody th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #f3f6f7;
+}
+table.type09 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
 }

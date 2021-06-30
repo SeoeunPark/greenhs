@@ -3,16 +3,30 @@
 {% block title %}Detail Repository{% endblock %}
 
 {% block content %}
+    {%  load staticfiles %}
+    {%  load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/intro_detail.css' %}">
+    <a href="{% url 'board:repository_list' %} "><img src="{% static 'img/logo.png' %}" style="width: 200px; "></a>
+    <br>
     {{ repository.description }}
-    <a href="{% url 'board:introduction_add' repository_pk=repository.pk %}"><i class="bi bi-plus-circle-fill"></i></a>
-    <table class="table">
+    <p class="a">그린하우스에 글을 쓰고 싶으시다면 물방울을 CLICK 해주세요!</p>
+    <a href="{% url 'board:introduction_add' repository_pk=1 %} "><i class="bi bi-droplet fa-4x"></i></a>
+    <table class="type09">
+        <thead>
+        <tr>
+            <th scope="cols">글 번호 </th>
+            <th scope="cols">제목</th>
+            <th scope="cols">작성자</th>
+        </tr>
+        </thead>
         <tbody>
         {% for introduction in repository.introduction_set.all %}
             <tr>
-                <td><a href="{% url 'board:introduction_modify' repository_pk=repository.pk pk=introduction.pk %}"><i class="btn bi-success">수정</i></a></td>
-
-                <td>제목: <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}">{{ introduction.version }}</a></td>
-                <td><a href="{% url 'board:introduction_delete' repository_pk=repository.pk pk=introduction.pk %}"><i class="bi bi-trash"></i></a></td>
+                {#   <td><a href="#}{#  url 'board:introduction_modify' repository_pk=repository.pk pk=introduction.pk #} {#  "><i class="btn bi-success">수정</i></a></td>  #}
+                <td>{{ introduction.version}}</td>
+                <td>  <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}">{{ introduction.title }}</a></td>
+                <td>{{ introduction.access}}</td>
+                {#  <td><a href="#}{#  url 'board:introduction_delete' repository_pk=repository.pk pk=introduction.pk #} {#"><i class="bi bi-trash"></i></a></td> #}
             </tr>
         {% endfor %}
         </tbody>
