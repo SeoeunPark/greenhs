@@ -6,7 +6,7 @@ from board.models import Introduction, Comment
 class IntroductionForm(forms.ModelForm):
     class Meta:
         model = Introduction
-        fields = ['title','repository', 'version', 'contents', 'access','passwd']  # '__all__'
+        fields = ['title','repository', 'version', 'contents', 'access']  # '__all__'
         widgets = {
             'title':forms.Textarea(attrs={'class': 'form-control', 'rows': 1}),
             'contents': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
@@ -18,7 +18,6 @@ class IntroductionForm(forms.ModelForm):
             'version': '  글 번호',
             'contents': '  글 내용',
             'access': '  작성자',
-            'passwd' : '비밀번호',
         }
 
         class CommentForm(forms.ModelForm):

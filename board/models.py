@@ -23,7 +23,6 @@ class Introduction(models.Model):
     version = models.IntegerField(default=1)
     contents = models.TextField(max_length=100)
     access = models.CharField(max_length=10)
-    passwd = models.CharField(max_length=10)
 
     # intro1.comment_set
     class Meta:

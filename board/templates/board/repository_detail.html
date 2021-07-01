@@ -25,7 +25,7 @@
             <tr>
                 {#   <td><a href="#}{#  url 'board:introduction_modify' repository_pk=repository.pk pk=introduction.pk #} {#  "><i class="btn bi-success">수정</i></a></td>  #}
                 <td>{{ introduction.version}}</td>
-                <td>  <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}">{{ introduction.title }}</a></td>
+                <td>  <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}" style="color: #124b12">{{ introduction.title }}</a></td>
                 <td>{{ introduction.access}}</td>
                 {#  <td><a href="#}{#  url 'board:introduction_delete' repository_pk=repository.pk pk=introduction.pk #} {#"><i class="bi bi-trash"></i></a></td> #}
             </tr>
