@@ -40,19 +40,19 @@ class IntroductionDetailView(generic.DetailView):
 
 class IntroductionCreateView(generic.CreateView):
     model = Introduction
-    fields =  ['title', 'repository', 'version', 'contents', 'access']   # '__all__'
+    fields =  ['title', 'repository', 'number', 'contents', 'writer']   # '__all__'
     template_name_suffix = '_create'
 
     def get_initial(self):
         repository = get_object_or_404(Repository, pk=self.kwargs['repository_pk'])
         introduction = repository.introduction_set.aggregate(
-            Max('version'))  # 해당 repository의 introduction 중 version 최대값 구하자
-        version = introduction['version__max']
-        if version == None:  # introduction이 아예 없으면 version 기본값: 1
-            version = 1
-        else:  # introduction이 있으면 version 최대값에서 +1
-            version += 1
-        return {'repository': repository, 'version': version}
+            Max('number'))  # 해당 repository의 introduction 중 number 최대값 구하자
+        number = introduction['number__max']
+        if number == None:  # introduction이 아예 없으면 number 기본값: 1
+            number = 1
+        else:  # introduction이 있으면 number 최대값에서 +1
+            number += 1
+        return {'repository': repository, 'number': number}
 
     def get_success_url(self):
         return reverse_lazy('board:repository_detail', kwargs={'pk': self.kwargs['repository_pk']})
@@ -66,15 +66,15 @@ def add_introduction(request, repository_pk):  # return render(request, '템플�
             return redirect('board:repository_detail', pk=repository_pk)  # repository_detail로 redirect
     else:  # POST가 아니면(요청한 것: introduction 만들기위한 form 보여주기)
         repository = get_object_or_404(Repository, pk=repository_pk)  # repository를 DB에서 꺼내자
-        introduction = repository.introduction_set.order_by('-version').first()
+        introduction = repository.introduction_set.order_by('-number').first()
         if introduction == None:
-            version = 1  # introduction이 없으면 version = 1
+            number = 1  # introduction이 없으면 number = 1
             contents = ''  # introduction이 없으면 ''
-            access = 1
+            writer = 1
         else:
-            version = introduction.version + 1  # repository에 있는 introduction 중 가장 큰 버전 + 1
-            access = introduction.access
-        initial = {'repository': repository, 'version': version}
+            number = introduction.number + 1  # repository에 있는 introduction 중 가장 큰 버전 + 1
+            writer = introduction.writer
+        initial = {'repository': repository, 'number': number}
         form = IntroductionForm(initial=initial)  # form 가져오자
         context = {'form': form, 'repository': repository}  # context = form, repository
 
@@ -83,8 +83,16 @@ def add_introduction(request, repository_pk):  # return render(request, '템플�
 
 class IntroductionUpdateView(generic.UpdateView):
     model = Introduction
-    fields = ['title', 'repository', 'version', 'contents', 'access']  # '__all__'
     template_name_suffix = '_update'
+    fields = ['title', 'repository', 'number', 'contents', 'writer']  # '__all__'
+    labels = {
+        'title': '  글 제목',
+        'repository': '  주제   ',
+        'number': '  글 번호',
+        'contents': '  글 내용',
+        'writer': '  작성자',
+    }
+
     def get_success_url(self):
         return reverse_lazy('board:repository_detail', kwargs={'pk': self.kwargs['repository_pk']})
 
@@ -99,7 +107,11 @@ class IntroductionDeleteView(generic.DeleteView):
 class CommentCreateView(
     generic.CreateView):  # repository/<int:repository_pk>/introduction/<int:introduction_pk>/comment/add/
     model = Comment
-    fields = '__all__'  # ['introduction', 'comment']
+    fields = ['introduction', 'comment']  # ['introduction', 'comment']
+    labels = {
+        'introduction': '  글 제목',
+        'comment': '  댓글   ',
+    }
     template_name_suffix = '_create'  # comment_create.html
 
     def get_initial(self):
@@ -117,7 +129,11 @@ class CommentCreateView(
 
 class CommentUpdateView(generic.UpdateView):
     model = Comment
-    fields = '__all__'  # ['introduction', 'comment']
+    fields = ['introduction', 'comment']  # ['introduction', 'comment']
+    labels = {
+        'introduction': '  글 제목',
+        'comment': '  댓글   ',
+    }
     template_name_suffix = '_update'  # comment_update.html
 
     def get_success_url(self):  # board:introduction_detail repository_pk pk

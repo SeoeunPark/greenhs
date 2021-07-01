@@ -20,16 +20,16 @@ class Repository(models.Model):
 class Introduction(models.Model):
     repository = models.ForeignKey(Repository, on_delete=models.CASCADE)  # intro1.repository
     title = models.CharField(max_length=10)
-    version = models.IntegerField(default=1)
+    number = models.IntegerField(default=1)
     contents = models.TextField(max_length=100)
-    access = models.CharField(max_length=10)
+    writer = models.CharField(max_length=10)
 
     # intro1.comment_set
     class Meta:
-        ordering = ['-version']
+        ordering = ['-number']
 
     def __str__(self):
-        return f'{self.version} {self.contents}'
+        return f'{self.number} {self.contents}'
 
 
 class Comment(models.Model):
