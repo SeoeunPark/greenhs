@@ -23,8 +23,8 @@ class IntroductionForm(forms.ModelForm):
         class CommentForm(forms.ModelForm):
             class Meta:
                 model = Comment
-                fields = ['introduction', 'comment']  # '__all__'
+                fields = ['text', 'comment']  # '__all__'
                 labels = {
-                    'introduction': '  글 제목',
+                    'text': '  글 제목',
                     'comment': '  댓글   ',
                 }

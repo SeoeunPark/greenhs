@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'polls/form.css' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">댓글 추가</button>
+        <button type="submit" class="button button1">댓글 추가</button>
+        <button type="button" onclick="history.back();" class="button button1">취소</button>
     </form>
 {% endblock %}

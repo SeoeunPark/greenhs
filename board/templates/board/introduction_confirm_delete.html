@@ -9,7 +9,7 @@
     <form action="" method="post">
         {% csrf_token %}
         {{ introduction.writer }}님의 "{{ introduction.title }}"를 삭제하시겠습니까?
-        <button type="submit">삭제</button>
-        <button type="button" onclick="history.back();">취소</button>
+        <button type="submit" class="button button1">삭제</button>
+        <button type="button" onclick="history.back(); " class="button button1">취소</button>
     </form>
 {% endblock %}

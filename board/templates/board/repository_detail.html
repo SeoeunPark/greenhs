@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Detail Repository{% endblock %}
+{% block title %}그린하우스 게시판{% endblock %}
 
 {% block content %}
     {%  load staticfiles %}
@@ -25,7 +25,7 @@
             <tr>
                 {#   <td><a href="#}{#  url 'board:introduction_modify' repository_pk=repository.pk pk=introduction.pk #} {#  "><i class="btn bi-success">수정</i></a></td>  #}
                 <td>{{ introduction.number}}</td>
-                <td>  <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}" style="color: #124b12">{{ introduction.title }}</a></td>
+                <td>  <a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}" style="color: #124b12">{{ introduction.title }}</a> ({{introduction.comment_set.all.count}})</td>
                 <td>{{ introduction.writer}}</td>
                 {#  <td><a href="#}{#  url 'board:introduction_delete' repository_pk=repository.pk pk=introduction.pk #} {#"><i class="bi bi-trash"></i></a></td> #}
             </tr>

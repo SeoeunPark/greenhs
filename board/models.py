@@ -33,7 +33,7 @@ class Introduction(models.Model):
 
 
 class Comment(models.Model):
-    introduction = models.ForeignKey(Introduction, on_delete=models.CASCADE)  # comm1.introduction
+    text = models.ForeignKey(Introduction, on_delete=models.CASCADE)  # comm1.introduction
     comment = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

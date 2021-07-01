@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'polls/form.css' %}">
         {% csrf_token %}
          "{{ comment }}" 댓글을 삭제하시겠습니까??
-        <button type="submit">삭제</button>
-        <button type="button" onclick="history.back();">취소</button>
+        <button type="submit" class="button button1">삭제</button>
+        <button type="button" onclick="history.back();" class="button button1">취소</button>
     </form>
 {% endblock %}

@@ -28,7 +28,7 @@
                         <tr>
                             {% for introduction in repository.introduction_set.all|slice:':3' %}
                                 <tr>
-                                    <td>No.{{ introduction.number }} {{ introduction.title|truncatechars:10 }}</td>
+                                    <td>No.{{ introduction.number }} {{ introduction.title|truncatechars:10 }} ({{introduction.comment_set.all.count}})</td>
                                     <td><a href="{% url 'board:introduction_detail' repository_pk=repository.pk pk=introduction.pk %}" style="color: green";><i class="bi bi-arrow-right-square "></i></a></td>
                                 </tr>
                             {% endfor %}

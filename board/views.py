@@ -107,16 +107,16 @@ class IntroductionDeleteView(generic.DeleteView):
 class CommentCreateView(
     generic.CreateView):  # repository/<int:repository_pk>/introduction/<int:introduction_pk>/comment/add/
     model = Comment
-    fields = ['introduction', 'comment']  # ['introduction', 'comment']
+    fields = ['text', 'comment']  # ['introduction', 'comment']
     labels = {
-        'introduction': '  글 제목',
+        'text': '  글 제목',
         'comment': '  댓글   ',
     }
     template_name_suffix = '_create'  # comment_create.html
 
     def get_initial(self):
-        introduction = get_object_or_404(Introduction, pk=self.kwargs['introduction_pk'])
-        return {'introduction': introduction}
+        text = get_object_or_404(Introduction, pk=self.kwargs['introduction_pk'])
+        return {'text': text}
 
     def get_success_url(self):  # board:introduction_detail repository_pk pk
         kwargs = {
@@ -129,9 +129,9 @@ class CommentCreateView(
 
 class CommentUpdateView(generic.UpdateView):
     model = Comment
-    fields = ['introduction', 'comment']  # ['introduction', 'comment']
+    fields = ['text', 'comment']  # ['introduction', 'comment']
     labels = {
-        'introduction': '  글 제목',
+        'text': '  글 제목',
         'comment': '  댓글   ',
     }
     template_name_suffix = '_update'  # comment_update.html

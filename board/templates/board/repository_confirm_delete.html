@@ -6,7 +6,7 @@
     <form action="" method="post">
         {% csrf_token %}
         Do you want to delete Repository "{{ repository }}"?
-        <button type="submit">Delete</button>
-        <button type="button" onclick="history.back();">Cancel</button>
+        <button type="submit" class="button button1">Delete</button>
+        <button type="button" onclick="history.back();" class="button button1">Cancel</button>
     </form>
 {% endblock %}

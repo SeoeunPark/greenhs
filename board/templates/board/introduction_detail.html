@@ -45,8 +45,8 @@
         <tbody>
         {% for comment in introduction.comment_set.all %}
             <tr>
-                <td>{{ comment.comment }}</td>
-                <td><a href="{% url 'board:comment_modify' repository_pk=introduction.repository_id introduction_pk=introduction.pk pk=comment.pk %}"><button class="button button1">댓글 수정</button></a></td>
+                <td>"{{ comment.comment }}"</td>
+                <td><a href="{% url 'board:comment_modify' repository_pk=introduction.repository_id introduction_pk=introduction.pk pk=comment.pk %}"><button class="button button1" >댓글 수정</button></a></td>
                 <td><a href="{% url 'board:comment_delete' repository_pk=introduction.repository_id introduction_pk=introduction.pk pk=comment.pk %}"><button class="button button1">댓글 삭제</button></a></td>
             </tr>
         {% endfor %}

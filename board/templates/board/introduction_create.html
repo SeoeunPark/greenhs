@@ -9,10 +9,10 @@
     <br>
     <body>
     <form action="" method="post">
-        <h5 class="my-3 border-bottom pb-2">글 추가</h5>
+        <h5 class="my-3 border-bottom pb-2">글  추가</h5>
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">저장</button>
+        <button type="submit" class="button button1">저장</button>
     </form>
     </body>
 {% endblock %}
