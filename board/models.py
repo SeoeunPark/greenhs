@@ -19,9 +19,9 @@ class Repository(models.Model):
 
 class Introduction(models.Model):
     repository = models.ForeignKey(Repository, on_delete=models.CASCADE)  # intro1.repository
-    title = models.CharField(max_length=10)
+    title = models.CharField(max_length=30)
     number = models.IntegerField(default=1)
-    contents = models.TextField(max_length=100)
+    contents = models.TextField(max_length=300)
     writer = models.CharField(max_length=10)
 
     # intro1.comment_set
